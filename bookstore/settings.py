@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'registration',
     'store',
 ]
 
@@ -119,3 +120,19 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+
+#Registration
+ACCOUNT_ACTIVATION_DAYS = 30
+REGISTRATION_AUTO_LOGIN = True
+LOGIN_REDIRECT_URL = '/store/'
+
+
+#Email settings
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+EMAIL_HOST = "smtp.gmail.com"
+EMAIL_HOST_USER = "anaghajasna@gmail.com"
+EMAIL_HOST_PASSWORD = "teamsa123"
+EMAIL_PORT = 587
+EMAIL_USE_TLS =True
+DEFAULT_FROM_MAIL = "books@mysterybooks.com"
