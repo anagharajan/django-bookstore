@@ -110,8 +110,8 @@ def checkout_paypal(request, cart, orders):
 
         paypalrestsdk.configure({
             "mode": "sandbox",
-            "client_id": "AR7xG8guC_QJfZ7FGT6AvemJ9VVi0HO_VyNl7LyurUH7_6Q6hsG4rRlRVOVFSbeIOODQDCYWExX5O9oA",
-            "client_secret": "EAsrCvRejW9Hw615MUNyW9BZzr7kc_vZy1xixhd-tdH3qgOT2nOd6m0GYasTZUEDcVgcJbqWs1qROlGJ" })
+            "client_id": "AVBZp_zkQlOcTQO34dSxgTp7GftuXC4CbYVti3AKQ1BNz1DVqwY8Y7UC2Fvcqw3LDZ2P1ghQtmj6tRzT",
+            "client_secret": "EHsl7EhXCQYoroD5YMyyHUTB32-LC4m3zv77f8HBm9wFqNoHmXTULk-PpUzc9emHsaIgPNb82vwc29Vj" })
         payment = paypalrestsdk.Payment({
             "intent": "sale",
             "payer": {
@@ -170,7 +170,7 @@ def complete_order(request, processor):
         cart = Cart.objects.get(user=request.user.id, active=True)
         if processor == 'paypal':
             payment = paypalrestsdk.Payment.find(cart.payment_id)
-            if payment.execute({"payer_id": payment.payer.payer_info.payment_id}):
+            if payment.execute({"payer_id": payment.payer.payer_info.payer_id}):
                 message = "Success! Your order has been completed, and is being processed.Payment ID: %s" % (payment.id)
                 cart.active = False
                 cart.order_date = timezone.now()
