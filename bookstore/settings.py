@@ -69,7 +69,8 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'social.apps.django_app.context_processors.backends',
-                'social.apps.django_app.context_processors.login_redirect'
+                'social.apps.django_app.context_processors.login_redirect',
+                'django.template.context_processors.media'
             ],
         },
     },
@@ -137,6 +138,9 @@ STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.AppDirectoriesFinder',
     'compressor.finders.CompressorFinder',
 )
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_URL = "/media/"
 
 
 #Registration
