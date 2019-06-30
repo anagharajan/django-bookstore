@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.gis',
     'social.apps.django_app.default',
     'registration',
     'bootstrap3',
@@ -162,3 +163,6 @@ DEFAULT_FROM_MAIL = "books@mysterybooks.com"
 #Social Auth - Facebook
 SOCIAL_AUTH_FACEBOOK_KEY = '461208431312592'
 SOCIAL_AUTH_FACEBOOK_SECRET = '05dd823f1533111b9167e474f40d4e29'
+
+
+GEOIP_PATH = 'geo/'

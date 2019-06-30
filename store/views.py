@@ -3,6 +3,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.core.urlresolvers import reverse
 from django.utils import timezone
 from django.http import JsonResponse
+
+from django.contrib.gis.geoip import GeoIP
+
+
 import paypalrestsdk, stripe
 
 from .models import Book, BookOrder, Cart, Review
@@ -41,6 +45,10 @@ def book_details(request, book_id):
                 form = ReviewForm()
                 context['form'] = form
     context['reviews'] = book.review_set.all()
+    geo_info = GeoIP().city(request.META.get('REMOTE_ADDR'))
+    if not geo_info:
+        geo_info = GeoIP().city("192.206.151.131")
+    context['geo_info'] = geo_info
     return render(request, 'store/detail.html', context)
 
 
