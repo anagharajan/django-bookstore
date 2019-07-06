@@ -29,13 +29,8 @@ class Review(models.Model):
     user = models.ForeignKey(User)
     publish_date =models.DateField(default=timezone.now)
     text = models.TextField()
-
-
-class Review(models.Model):
-    book = models.ForeignKey(Book)
-    user = models.ForeignKey(User)
-    publish_date = models.DateField(default=timezone.now)
-    text = models.TextField()
+    latitude = models.FloatField(max_length=20, default="37.773972")
+    longitude = models.FloatField(max_length=20, default="-122.431297")
 
 
 class Cart(models.Model):
