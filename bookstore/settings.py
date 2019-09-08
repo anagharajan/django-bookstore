@@ -43,6 +43,8 @@ INSTALLED_APPS = [
     'bootstrap3',
     'bootstrap_themes',
     'compressor',
+    'tastypie',
+    'debug_toolbar',
     'store',
 ]
 
@@ -54,6 +56,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'bookstore.urls'
