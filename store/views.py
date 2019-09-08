@@ -8,6 +8,8 @@ from django.contrib.gis.geoip import GeoIP
 
 
 import paypalrestsdk, stripe
+import logging
+logger = logging.getLogger(__name__)
 
 from .models import Book, BookOrder, Cart, Review
 from .forms import ReviewForm
@@ -18,6 +20,10 @@ def index(request):
 
 
 def store(request):
+    i = 0
+    while i < 50:
+        logger.debug("test log: %d" % i)
+        i += 1
     books = Book.objects.all()
     context = {
         'books' : books,

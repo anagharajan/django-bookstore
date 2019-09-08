@@ -169,3 +169,29 @@ SOCIAL_AUTH_FACEBOOK_SECRET = '05dd823f1533111b9167e474f40d4e29'
 
 
 GEOIP_PATH = 'geo/'
+
+LOGGING = {
+    'version': 1,
+    'disable_existing_loggers': False,
+    'formatters': {
+        'basic': {
+            'format': '%(asctime)s %(name)-20s %(levelname)-8s %(module)s | %(message)s'
+        },
+    },
+    'handlers': {
+        'file': {
+            'level': 'DEBUG',
+            'class': 'logging.handlers.RotatingFileHandler',
+            'formatter': 'basic',
+            'maxBytes': 10000,
+            'backupCount': 10,
+            'filename': os.path.join(BASE_DIR, 'mystery_books.log'),
+        },
+    },
+    'loggers': {
+        'store': {
+            'handlers': ['file'],
+            'level': 'DEBUG',
+        },
+    }
+}
